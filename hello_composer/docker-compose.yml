@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  app:
+    image: openjdk:12-alpine
+    command: sh -c "javac Main.java && java Main"
+    working_dir: /.
+    volumes:
+      - ./:./

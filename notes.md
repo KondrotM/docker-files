@@ -3,6 +3,9 @@
 Using docker is no biggie, you just need to 
 Docker projects are based on two files: A `Dockerfile` and a `docker-compose.yml` file. Each file has a different purpose and while you can get by using only the Dockerfile, it is important to understand both for effective development.
 
+![Docker containers](https://i.imgur.com/LTyPF5o.png "Docker containers")
+![Docker vs VM](https://i.imgur.com/7Q4SeKh.png "Docker vs Virtual Machine")
+
 The `Dockerfile` is a lower-level set of instructions which details what to run in the project.
 The `docker-compose.yml` constructs a higher-level environment for how to run the project. 
 
@@ -122,6 +125,7 @@ curl localhost:8000
 #> Hello World! I've been seen 2 times.
 ```
 
+More docker compose documantation is [here](https://docs.docker.com/get-started/08_using_compose/)
 
 ## Cheatsheet
 ### Quick notes

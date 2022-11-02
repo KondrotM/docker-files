@@ -1,13 +1,11 @@
 # Docker notes
 ## Using Docker
-Using docker is no biggie, you just need to 
 Docker projects are based on two files: A `Dockerfile` and a `docker-compose.yml` file. Each file has a different purpose and while you can get by using only the Dockerfile, it is important to understand both for effective development.
 
-![Docker containers](https://i.imgur.com/LTyPF5o.png "Docker containers")
-[//]: # (![Docker vs VM](https://i.imgur.com/7Q4SeKh.png "Docker vs Virtual Machine"))
 
 The `Dockerfile` is a lower-level set of instructions which details what to run in the project.
 The `docker-compose.yml` constructs a higher-level environment for how to run the project. 
+![Docker containers](https://i.imgur.com/LTyPF5o.png "Docker containers")
 
 [//]: # (They have a different syntax. Further detail for each is below.)
 
@@ -16,7 +14,7 @@ Below is a simple `Dockerfile` used to run a java application.
 
 Java applicaition:
 ```java
-//Main.java
+// Main.java
 public class Main {
 	public static void main(String[] args){
 		System.out.println("Hello World!");

@@ -125,6 +125,50 @@ curl localhost:8000
 
 More docker compose documantation is [here](https://docs.docker.com/get-started/08_using_compose/)
 
+## Selenium with Docker
+
+## Maven with Docker
+Integrating a Maven project with Docker is a two-step process. One docker command packages the java code, running tests and compiling it, while another command then runs the compiled app. Below is a Dockerfile used for this.
+```dockerfile
+FROM    maven:3.6.0-jdk-8 AS build
+
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/maven-docker.jar /usr/local/lib/demo.jar
+
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/demo.jar"]
+```
+
+In order to correctly compile the jar, the pom.xml file must be modified to include a `<build>` section. The compiled jar will be in `/target/selenium_test.jar`, but the `finalName` tag can be changed.
+```xml
+<build>
+	<finalName>selenium_test</finalName>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+				<archive>
+				    <manifest>
+					<mainClass>org.mk.App</mainClass>
+				    </manifest>
+				</archive>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
+```
+
+To package and run the code locally, use these commands:
+```bash
+mvn clean package
+java -jar target/selenium_test.jar
+```
+
+
 ## Cheatsheet
 ### Quick notes
 Unless you have added docker to your user permissions, you will have to prepend most of these commands with `sudo` or use `sudo su`

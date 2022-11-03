@@ -55,4 +55,24 @@
     </dependency>
 
   </dependencies>
+
+  <build>
+	  <finalName>selenium_test</finalName>
+
+  <plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <mainClass>org.mk.App</mainClass>
+            </manifest>
+        </archive>
+    </configuration>
+  </plugin>
+  </plugins>
+
+  </build>
 </project>
+

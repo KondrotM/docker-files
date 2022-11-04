@@ -125,8 +125,6 @@ curl localhost:8000
 
 More docker compose documantation is [here](https://docs.docker.com/get-started/08_using_compose/)
 
-## Selenium with Docker
-
 ## Maven with Docker
 Integrating a Maven project with Docker is a two-step process. One docker command packages the java code, running tests and compiling it, while another command then runs the compiled app. Below is a Dockerfile used for this.
 ```dockerfile
@@ -162,11 +160,39 @@ In order to correctly compile the jar, the pom.xml file must be modified to incl
 </build>
 ```
 
-To package and run the code locally, use these commands:
+To run the docker project, run the following commands:
+```bash
+docker build -t maven_project .
+docker run maven_project
+```
+
+This process allows to you test and run a java project with maven packages in a container.
+
+
+To package and run the code locally (not needed, sanity check only), use these commands:
 ```bash
 mvn clean package
 java -jar target/selenium_test.jar
 ```
+
+## Selenium with Docker
+To open a remote selenium chrome image, use the following command in the command-line.
+```bash
+sudo docker run -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome
+
+```
+This will then launch a selenium instance on `localhost:4444`. You can connect to it in a java project using this command:
+```java
+ChromeOptions chromeOptions = new ChromeOptions();
+WebDriver driver = new RemoteWebDriver(new URL("http://chrome:4444/wd/hub"), chromeOptions );
+
+driver.manage().window().setSize(new Dimension(1280, 1020));
+```
+Then use your tests like normal. This works well as an example abstraction, but doesn't allow taking advantage of a lot of the benefits of Dockerised selenium, such as Selenium Grid.
+
+
+
+
 
 
 ## Cheatsheet

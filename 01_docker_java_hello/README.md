@@ -32,10 +32,22 @@ For more examples and ideas, visit:
 ### Not there yet? Installation
 This project was built on an ubuntu virtual machine. Docker was installed using this set of commands:
 ```bash
-installation commands
-```
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo ls /etc/apt/keyrings/
+echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-If you are on a different distribution, the following resources may be of use to you:
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo docker run hello-world
+
+```
+If you are on a different distribution, follow the [official installation steps for docker engine](https://docs.docker.com/engine/install/)
+
+If you are on a windows machine, you may need to [install docker desktop](https://docs.docker.com/desktop/install/windows-install/)
 
 
 ## Explanation

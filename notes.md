@@ -193,8 +193,6 @@ Then use your tests like normal. This works well as an example abstraction, but 
 
 
 
-
-
 ## Cheatsheet
 ### Quick notes
 Unless you have added docker to your user permissions, you will have to prepend most of these commands with `sudo` or use `sudo su`
